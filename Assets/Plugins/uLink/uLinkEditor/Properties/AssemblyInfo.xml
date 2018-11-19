@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AssemblyInfo FormatVersion="2">
+	<ProductName>uLinkEditor</ProductName>
+	<Description>Network editors and tools for uLink</Description>
+	<VersionData ImportPath="..\..\uLink\Properties\AssemblyInfo.xml" />
+</AssemblyInfo>

@@ -1,0 +1,103 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".cs" #>
+#region COPYRIGHT
+// (c)2012 MuchDifferent. All Rights Reserved.
+// 
+// $Revision: 11299 $
+// $LastChangedBy: aidin $
+// $LastChangedDate: 2012-02-04 17:03:20 +0100 (Sat, 04 Feb 2012) $
+#endregion
+
+using System;
+
+namespace uLink
+{
+
+	public partial class NetworkLog
+	{
+<#
+var arguments = "";
+var parameters = "";
+var typeparameters = "";
+var generics = "";
+
+for (int i = 1; i <= 12; i++)
+{
+	if (i > 0)
+	{
+		var name = "t" + i;
+		var seperator = (i != 1) ? ", " : "";
+		
+		arguments += ", " + name;
+		parameters += ", " + name.ToUpperInvariant() + " " + name;
+		typeparameters += seperator + name.ToUpperInvariant();
+		generics = "<" + typeparameters + ">";
+	}
+#>
+		
+			public static void Debug<#= generics #>(NetworkLogFlags flags<#= parameters #>)
+			{
+				if (IsDebugLevel(flags))
+				{
+					try
+					{
+						debugWriter(flags<#= arguments #>);
+					}
+					catch (Exception ex)
+					{
+						_DebugWriterFailed(ex, flags<#= arguments #>);
+					}
+				}
+			}
+			
+			public static void Info<#= generics #>(NetworkLogFlags flags<#= parameters #>)
+			{
+				if (IsInfoLevel(flags))
+				{
+					try
+					{
+						infoWriter(flags<#= arguments #>);
+					}
+					catch (Exception ex)
+					{
+						_InfoWriterFailed(ex, flags<#= arguments #>);
+					}
+				}
+			}
+			
+			public static void Warning<#= generics #>(NetworkLogFlags flags<#= parameters #>)
+			{
+				if (IsWarningLevel(flags))
+				{
+					try
+					{
+						warningWriter(flags<#= arguments #>);
+					}
+					catch (Exception ex)
+					{
+						_WarningWriterFailed(ex, flags<#= arguments #>);
+					}
+				}
+			}
+			
+			public static void Error<#= generics #>(NetworkLogFlags flags<#= parameters #>)
+			{
+				if (IsErrorLevel(flags))
+				{
+					try
+					{
+						errorWriter(flags<#= arguments #>);
+					}
+					catch (Exception ex)
+					{
+						_ErrorWriterFailed(ex, flags<#= arguments #>);
+					}
+				}
+			}
+			
+<#	
+}
+#>
+	}
+
+}

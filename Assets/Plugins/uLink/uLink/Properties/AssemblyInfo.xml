@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AssemblyInfo FormatVersion="2">
+	<ProductName>uLink</ProductName>
+	<Description>Network engine for Unity multiplayer and online applications</Description>
+	<VersionData>
+		<Version
+			Major="1"
+			Minor="6"
+			Update="0"
+			Hotfix="0"
+		/>
+		<Build
+			Type="Beta"
+			Number="58"
+		/>
+		<Source
+			IsSource="False"
+		/>
+		<FancyName>Birgit</FancyName>
+	</VersionData>
+</AssemblyInfo>
